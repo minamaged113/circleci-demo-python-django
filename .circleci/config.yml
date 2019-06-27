@@ -48,11 +48,11 @@ jobs:
                                 # installing dependencies.
                 key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
             - run:
-                command: |  # use pipenv to install dependencies
-                            # `Pipenv` is used to create a virtual
-                            # environment and install Python packages.
-                    sudo pip install pipenv
-                    pipenv install
+            command: |  # use pipenv to install dependencies
+                        # `Pipenv` is used to create a virtual
+                        # environment and install Python packages.
+                sudo pip install pipenv
+                pipenv install
 
             - save_cache:
                 key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
@@ -62,5 +62,5 @@ jobs:
                     - "/usr/local/lib/python3.6/site-packages"
 
             - run:
-                command: |
-                    pipenv run python manage.py test
+            command: |
+                pipenv run python manage.py test
